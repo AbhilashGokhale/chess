@@ -1,0 +1,681 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Devoloped by Abhilash Gokhale -->
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Chess</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <style>
+      /* Media Query for Mobile Devices */
+      @media (max-width: 900px) {
+           .start{ position: absolute;
+                   top: 50%;
+                   left: 50%;
+                   -ms-transform: translate(-50%, -50%);
+                   transform: translate(-50%, -50%);
+                   display: block; width: 100px; height: 3%;
+                   border-radius: 5px; background-color: rgb(44, 248, 61); 
+                   border-width: 0px ; z-index: 1;
+                   
+           }
+
+           .board{margin: 0;
+                 position: absolute;
+                 top: 50%;
+                 -ms-transform: translateY(-50%);
+                 transform: translateY(-50%);
+           }
+           #myDIV1{
+            position:absolute; top:20px; left:20%; width: 25%; text-align: right;   -webkit-transform:rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+
+           }
+           .draggableb{
+            position:absolute; top:20px; 
+            left:5%; width: 9%; height:8.8vw;
+            
+           }
+           .draggablew{
+            position:absolute; bottom:20px; left:5%; width: 9%; height:8.8vw;
+           }
+           #myDIV2{
+            position:absolute; bottom:20px; left:20%; width: 25%;
+           }
+           .wrapper{
+            background-color: black ;
+            position:absolute; border: 1px black solid; top:20px; left :60%; padding: 5px 5px 5px 5px;
+            -webkit-transform:rotate(180deg);
+            -moz-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            -o-transform: rotate(180deg);
+            transform: rotate(180deg);
+           }
+       
+           
+           .wrapper1{
+            position:absolute; left: 60%; border: 1px black solid; 
+            top:94%; padding: 5px 5px 5px 5px;
+            
+           }
+           #bk{
+         background-image: url('./images/4a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #bq{
+         background-image: url('./images/3a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #be{
+         background-image: url('./images/7a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #bh{
+         background-image: url('./images/8a.png');
+         background-size: 99.9% 99.9%; 
+         font-size: 100%;
+        }
+    #bc{
+         background-image: url('./images/12a.png');
+         background-size: 99.9% 99.9%; 
+         font-size: 100%;
+        }
+    #bs{
+         background-image: url('./images/11a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wk{
+         background-image: url('./images/5a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wq{
+         background-image: url('./images/2a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #we{
+         background-image: url('./images/6a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wh{
+         background-image: url('./images/9a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+     #wc{
+         background-image: url('./images/13a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #ws{
+         background-image: url('./images/10a.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+           
+        }
+          
+        /* Media Query for low resolution  Tablets, Ipads */
+        @media (min-width: 901px) {
+           .start{position: absolute;
+                z-index: 1;
+                top: 25vw;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);display: block; 
+                width: 10%; height: 3%; border-radius: 5px;
+                background-color: rgb(44, 248, 61); border-width: 0px;
+
+           }
+           .board{
+            display: block;margin-left: auto; 
+            margin-right: auto;width: 50%; height: 100%;
+           }
+           #myDIV1{
+            position:absolute; top:1px; left:5%; width: 15%; text-align: right;
+
+           }
+           .draggableb{
+               position:absolute; top:20px; 
+               left:5%; width: 4.5%; height:4.35vw;
+
+           }
+           .draggablew{
+               position:absolute; top:20px; 
+               right:5%; width: 4.5%; height:4.35vw;
+
+           }
+           #myDIV2{
+            position:absolute; top:1px; right:5%; width: 15%;
+           }
+           .wrapper{
+            background-color: black ;position:absolute; border: 1px black solid; top:100px; padding: 5px 5px 5px 5px; margin-left: 10%;
+           }
+        
+           .wrapper1{
+               position:absolute; border: 1px black solid; top:100px; padding: 5px 5px 5px 5px;margin-left : 84%;
+           }
+           #bk{
+         background-image: url('./images/4.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #bq{
+         background-image: url('./images/3.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #be{
+         background-image: url('./images/7.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #bh{
+         background-image: url('./images/8.png');
+         background-size: 99.9% 99.9%; 
+         font-size: 100%;
+        }
+    #bc{
+         background-image: url('./images/12.png');
+         background-size: 99.9% 99.9%; 
+         font-size: 100%;
+        }
+    #bs{
+         background-image: url('./images/11.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wk{
+         background-image: url('./images/5.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wq{
+         background-image: url('./images/2.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #we{
+         background-image: url('./images/6.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #wh{
+         background-image: url('./images/9.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+     #wc{
+         background-image: url('./images/13.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+    #ws{
+         background-image: url('./images/10.png');
+         background-size: 99.9% 99.9%;
+         font-size: 100%;
+        }
+
+
+
+        }
+        .buttons1{
+            margin-left: auto; margin-right: auto;width: 50%;
+           }
+        .buttons{
+            margin-left: auto; margin-right: auto;width: 50%;
+           }
+        .time{
+               color: white;
+           }     
+
+       
+</style>
+
+
+<button class="start" onclick="myFunction()" id="myDIV" >Start</button>
+
+
+<script>
+  function myFunction() {
+    var btn = document.getElementById("myDIV");
+    var blc = document.getElementById("myDIV1");
+    var wht = document.getElementById("myDIV2");
+    if (btn.style.display === "none") {
+      btn.style.display = "block";
+      blc.style.display = "block";
+      wht.style.display = "block";
+    } else {
+      btn.style.display = "none";
+      blc.style.display = "none";
+      wht.style.display = "none";
+    }
+  }
+  </script>
+
+    <div class = "board">
+        <img class= "img" src="./images/1.png" alt="Board" width="100%" height="100%">
+    </div>
+
+
+<!-- black --><span id="containerblack">
+  <div id ="myDIV1"> Collect black pawns here</div>
+    <div class="draggable draggableb" id="bk" ></div>
+    <div class="draggable draggableb" id="bq" ></div>
+    <div class="draggable draggableb" id="be" ></div>
+    <div class="draggable draggableb" id="be" ></div>
+    <div class="draggable draggableb" id="bh" ></div>
+    <div class="draggable draggableb" id="bh" ></div>
+    <div class="draggable draggableb" id="bc" ></div>
+    <div class="draggable draggableb" id="bc" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+    <div class="draggable draggableb" id="bs" ></div>
+
+  </span>
+  <!-- white--><span id="containerblack">
+    <div  id ="myDIV2"> Collect white pawns here</div>
+
+    <div class="draggable draggablew" id="wk" ></div>
+    <div class="draggable draggablew" id="wq" ></div>
+    <div class="draggable draggablew" id="wc" ></div>
+    <div class="draggable draggablew" id="wc" ></div>
+    <div class="draggable draggablew" id="wh" ></div>
+    <div class="draggable draggablew" id="wh" ></div>
+    <div class="draggable draggablew" id="we" ></div>
+    <div class="draggable draggablew" id="we" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+    <div class="draggable draggablew" id="ws" ></div>
+
+</span>
+
+  <span class="wrapper  draggable" ondragstart="stop()" >
+    <div class="time" >
+      <span class="hour">00</span>
+      <span class="colon">:</span>
+      <span class="minute">00</span>
+      <span class="colon">:</span>
+      <span class="second">00</span>
+      <span class="colon ms-colon">:</span>
+      <span class="millisecond">00</span>
+    </div>
+    <div class="buttons" >
+    
+      <button  onclick="stop()"  style="  position: absolute;
+      display: block;">Stop</button>
+     
+    </div>
+  </span>
+  <div class="wrapper1 draggable"  ondragstart="stop1()">
+    <div class="time1">
+      
+      <span class="hour1">00</span>
+      <span class="colon">:</span>
+      <span class="minute1">00</span>
+      <span class="colon">:</span>
+      <span class="second1">00</span>
+      <span class="colon ms-colon">:</span>
+      <span class="millisecond1">00</span>
+    </div>
+    <div class="buttons1" >   
+      
+      <button onclick="stop1()" style="  position: absolute;
+display: block;">Stop</button>
+      
+    </div>
+  </div>
+  <script>
+  let hr = min = sec = ms = "0" + 0,
+    startTimer;
+
+ let hr1 = min1 = sec1 = ms1 = "0" + 0,
+    startTimer1;
+
+  const startBtn = document.querySelector(".start");
+   startBtn.addEventListener("click", start);
+
+   
+
+
+var x = 2;
+
+
+  function start() { 
+    if (ms == 0 & sec ==0 & ms1 == 0 & sec1 ==0){
+      x=1;
+    
+        startTimer1 = setInterval(()=>{
+      ms1++
+      ms1 = ms1 < 10 ? "0" + ms1 : ms1;
+
+      if(ms1 == 100){
+        sec1++;
+        sec1 = sec1 < 10 ? "0" + sec1 : sec1;
+        ms1 = "0" + 0;
+      }
+      if(sec1 == 60){
+        min1++;
+        min1 = min1 < 10 ? "0" + min1 : min1;
+        sec1 = "0" + 0;
+      }
+      if(min1 == 60){
+        hr1++;
+        hr1 = hr1 < 10 ? "0" + hr1 : hr1;
+        min1 = "0" + 0;
+      }
+      putValue1();
+    },10); //1000ms = 1s
+  }
+  }
+
+  function stop1() {
+    if(x==1){
+      x=0;
+      
+    startTimer = setInterval(()=>{
+      ms++
+      ms = ms < 10 ? "0" + ms : ms;
+
+      if(ms == 100){
+        sec++;
+        sec = sec < 10 ? "0" + sec : sec;
+        ms = "0" + 0;
+      }
+      if(sec == 60){
+        min++;
+        min = min < 10 ? "0" + min : min;
+        sec = "0" + 0;
+      }
+      if(min == 60){
+        hr++;
+        hr = hr < 10 ? "0" + hr : hr;
+        min = "0" + 0;
+      }
+      putValue();
+    },10); //1000ms = 1s
+    clearInterval(startTimer1);
+  }
+  }
+
+  function stop() { 
+    if(x==0){
+      x=1;
+    
+    startTimer1 = setInterval(()=>{
+  ms1++
+  ms1 = ms1 < 10 ? "0" + ms1 : ms1;
+
+  if(ms1 == 100){
+    sec1++;
+    sec1 = sec1 < 10 ? "0" + sec1 : sec1;
+    ms1 = "0" + 0;
+  }
+  if(sec1 == 60){
+    min1++;
+    min1 = min1 < 10 ? "0" + min1 : min1;
+    sec1 = "0" + 0;
+  }
+  if(min1 == 60){
+    hr1++;
+    hr1 = hr1 < 10 ? "0" + hr1 : hr1;
+    min1 = "0" + 0;
+  }
+  putValue1();
+},10); //1000ms = 1s
+clearInterval(startTimer);
+}}
+  function putValue() {
+    document.querySelector(".millisecond").innerText = ms;
+    document.querySelector(".second").innerText = sec;
+    document.querySelector(".minute").innerText = min;
+    document.querySelector(".hour").innerText = hr;
+  }
+
+  function putValue1() {
+    document.querySelector(".millisecond1").innerText = ms1;
+    document.querySelector(".second1").innerText = sec1;
+    document.querySelector(".minute1").innerText = min1;
+    document.querySelector(".hour1").innerText = hr1;
+  }
+
+
+ </script>
+   
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> 
+
+    <script>
+         
+      
+
+
+      //drag starts here
+      $(document).ready(function() {
+                      
+                      $(".draggable").draggableTouch();
+                  
+                  $(".draggable").bind("dragstart", function(e, pos) {
+                     
+                     
+                  }).bind("dragend", function(e, pos) {
+                      
+                  });
+              });
+              
+              // if this is a touch device, we assume we don't have a visible console and use
+              // a crappy homemade one :)
+              if ("ontouchstart" in document.documentElement) {
+                  window.console = {
+                      log: function(a, b, c) {
+                          if (a && b && c)
+                              $("<div>" + a + " " + b + " " + c + "</div>").appendTo($("#console"));
+                          else if (a && b)
+                              $("<div>" + a + " " + b + "</div>").appendTo($("#console"));
+                          else if (a)
+                              $("<div>" + a + "</div>").appendTo($("#console"));
+                      }
+                  };
+              }
+      
+      
+      /**
+      * jQuery Draggable Touch v0.6
+      * Jonatan Heyman | http://heyman.info 
+      *
+      * Make HTML elements draggable by using uses touch events.
+      * The plugin also has a fallback that uses mouse events, 
+      * in case the device doesn't support touch events.
+      * 
+      * Licenced under THE BEER-WARE LICENSE (Revision 42):
+      * Jonatan Heyman (http://heyman.info) wrote this file. As long as you retain this 
+      * notice you can do whatever you want with this stuff. If we meet some day, and 
+      * you think this stuff is worth it, you can buy me a beer in return.
+      */
+      ;(function($){
+      $.fn.draggableTouch = function(actionOrSettings) {
+          // check if the device has touch support, and if not, fallback to use mouse
+          // draggableMouse which uses mouse events
+          if (window.ontouchstart === undefined) {
+              return this.draggableMouse(actionOrSettings);
+          }
+      
+          if (typeof(actionOrSettings) == "string") {
+              // check if we shall make it not draggable
+              
+                  this.unbind("touchstart.draggableTouch");
+                  this.unbind("touchmove.draggableTouch");
+                  this.unbind("touchend.draggableTouch");
+                  this.unbind("touchcancel.draggableTouch");
+                  
+                  this.trigger("dragdisabled");
+      
+                  return this;
+              
+          } else {
+              var useTransform = actionOrSettings && actionOrSettings.useTransform;
+          }
+          
+          this.each(function() {
+              var element = $(this);
+              var offset = null;
+              var draggingTouchId = null;
+              var end = function(e) {
+                  e.preventDefault();
+                  var orig = e.originalEvent;
+                  for (var i=0; i<orig.changedTouches.length; i++) {
+                      var touch = orig.changedTouches[i];
+                      // the only touchend/touchcancel event we care about is the touch
+                      // that started the dragging
+                      if (touch.identifier != draggingTouchId) {
+                          continue;
+                      }
+                      element.trigger("dragend", {
+                          top: orig.changedTouches[0].pageY - offset.y,
+                          left: orig.changedTouches[0].pageX - offset.x
+                      });
+                      draggingTouchId = null;
+                      
+                      
+                  }
+              };
+              
+              element.bind("touchstart.draggableTouch", function(e) {
+                  e.preventDefault();
+                  var orig = e.originalEvent;
+                  // if this element is already being dragged, we can early exit, otherwise
+                  // we need to store which touch started dragging the element
+                  if (draggingTouchId) {
+                      return;
+                  } else {
+                      draggingTouchId = orig.changedTouches[0].identifier;
+                  }
+                  var pos = $(this).position();
+                  offset = {
+                      x: orig.changedTouches[0].pageX - pos.left,
+                      y: orig.changedTouches[0].pageY - pos.top
+                  };
+                  element.trigger("dragstart", pos);
+                  
+              });
+              element.bind("touchmove.draggableTouch", function(e) {
+                  e.preventDefault();
+                  var orig = e.originalEvent;
+                  
+                  for (var i=0; i<orig.changedTouches.length; i++) {
+                      var touch = orig.changedTouches[i];
+                      // the only touchend/touchcancel event we care about is the touch
+                      // that started the dragging
+                      if (touch.identifier != draggingTouchId) {
+                          continue;
+                      }
+                      if (useTransform) {
+                          $(this).css({
+                              "transform": "translate3d(" + (touch.pageX - offset.x) + "px, " + (touch.pageY - offset.y) + "px, 0px)",
+                          });
+                      } else {
+                          $(this).css({
+                              top: touch.pageY - offset.y,
+                              left: touch.pageX - offset.x
+                          });
+                      }
+                  }
+              });
+              element.bind("touchend.draggableTouch touchcancel.draggableTouch", end);
+          });
+          return this;
+      };
+      
+      /**
+       * Draggable fallback for when touch is not available
+       */
+      $.fn.draggableMouse = function (actionOrSettings) {
+          if (typeof(actionOrSettings) == "string") {
+              // check if we shall make it not draggable
+              if (actionOrSettings == "disable") {
+                  this.unbind("mousedown.draggableTouch");
+                  this.unbind("mouseup.draggableTouch");
+                  $(document).unbind("mousemove.draggableTouch");
+      
+                  this.trigger("dragdisabled");
+      
+                  return this;
+              }
+          } else {
+              var useTransform = actionOrSettings && actionOrSettings.useTransform;
+          }
+          
+          this.each(function() {
+              var element = $(this);
+              var offset = null;
+              
+              
+              var move = function(e) {
+                  if (useTransform) {
+                      element.css({
+                          "transform": "translate3d(" + (e.pageX - offset.x) + "px, " + (e.pageY - offset.y) + "px, 0px)",
+                      });
+                  } else {
+                      element.css({
+                          top: e.pageY - offset.y,
+                          left: e.pageX - offset.x,
+                      });
+                  }
+              };
+              var up = function(e) {
+                  element.unbind("mouseup.draggableTouch", up);
+                  $(document).unbind("mousemove.draggableTouch", move);
+                  element.trigger("dragend", {
+                      top: e.pageY - offset.y,
+                      left: e.pageX - offset.x
+                  });
+              };
+              element.bind("mousedown.draggableTouch", function(e) {
+                  var pos = element.position();
+                  offset = {
+                      x: e.pageX - pos.left,
+                      y: e.pageY - pos.top
+                  };
+                  $(document).bind("mousemove.draggableTouch", move);
+                  element.bind("mouseup.draggableTouch", up);
+                  element.trigger("dragstart", pos);
+                  e.preventDefault();
+              });
+          });
+          return this;
+      };
+      })(jQuery);
+      // movement ends here
+    </script>
+    
+    <script type="text/javascript">
+      window.onbeforeunload = function () {
+       return 'Are you really want to perform the action?';
+      }
+     </script>
+      
+
+</body>
+</html>
